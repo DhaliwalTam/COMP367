@@ -3,8 +3,9 @@ import java.time.LocalTime;
 public class GreetingMessage {
 	 public static String getGreetingMessage(String name) {
 	        LocalTime currentTime = LocalTime.now();
+	       
 	        String greeting;
-
+	        
 	        if (currentTime.isBefore(LocalTime.NOON)) {
 	            greeting = "Good morning";
 	        } else {
