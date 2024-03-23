@@ -25,16 +25,12 @@ pipeline {
         withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
             script {
                 // Use 'sh' instead of 'bat' for cross-platform compatibility
-                if (isUnix()) {
-                    sh "echo \$DOCKER_PASSWORD | docker login -u \$DOCKER_USERNAME --password-stdin"
-                } else {
-                    bat "echo %DOCKER_PASSWORD% | docker login -u %DOCKER_USERNAME% --password-stdin"
+                
+                    bat "echo %DOCKER_PASSWORD% | docker login -u %DOCKER_USERNAME% -p %DOCKER_PASSWORD%"
                 }
             }
         }
     }
-}
-
         stage('Docker Push') {
             steps {
                 // Push the Docker image to Docker Hub
