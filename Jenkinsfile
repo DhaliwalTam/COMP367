@@ -16,7 +16,7 @@ pipeline {
         stage('Docker Build') {
             steps {
                 // Build the Docker image
-                bat 'docker build -t comp367webapp:latest .'
+                bat 'docker build -t  tdhali/comp367webapp:latest .'
             }
         }
         stage('Docker Login') {
